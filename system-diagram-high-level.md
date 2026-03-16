@@ -1,10 +1,16 @@
 ## rbot high level system diagram
 
+**System Name:** `rbot-office`
+
+**Description:** A headless, Python-based multi-agent orchestration service. It bridges omnichannel interfaces (Slack, etc) with a central RAG vector database (AnythingLLM) and external APIs (Google Drive, GitHub, etc for agent tools | OpenAI, Anthropic, and Google LLM connectivity), enabling autonomous tool execution, persistent reflective memory, and strict persona segregation.
+
+**Date:** 2026-03-15
+
 ````mermaid
 
 flowchart TD
     %% Define external actors and services
-    Ross([Ross - Laptop/Mobile])
+    Ross([Any Internet-connected Client])
     
     subgraph External Cloud Services
         Slack[Slack Workspace]
