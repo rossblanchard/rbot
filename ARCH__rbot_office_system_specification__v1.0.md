@@ -2,7 +2,7 @@
 
 ## 1. System Overview
 **System Name:** `rbot-office`
-**Description:** A headless, Python-based multi-agent orchestration service. It bridges omnichannel interfaces (Slack) with a central RAG vector database (AnythingLLM) and external APIs (Google Drive), enabling autonomous tool execution, persistent reflective memory, and strict persona segregation.
+**Description:** A headless, Python-based multi-agent orchestration service. It bridges omnichannel interfaces (Slack, etc) with a central RAG vector database (AnythingLLM) and external APIs (Google Drive), enabling autonomous tool execution, persistent reflective memory, and strict persona segregation.
 **Date:** 2026-03-15
 **Architect:** Archie / Ross
 
