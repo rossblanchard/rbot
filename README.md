@@ -156,6 +156,21 @@ flowchart TB
 - **Headless Tool Execution:** The Python swarm utilizes headless OAuth to stream finalized markdown documents and system specs directly from RAM to the `rbot` Google Drive folder, bypassing brittle SD card writes.
 - **Multi-Step Reasoning Loops:** The Python orchestrator utilizes a `while` execution loop, allowing the active cognitive engine to chain multiple tools together (e.g., *Search the Live Web -> Read the Results -> Synthesize a Spec -> Commit to RAG*) entirely autonomously.
 
+## 📚 Knowledge Architecture & Deterministic RAG
+
+A common failure mode of modern AI systems is "Semantic Drift"—where an LLM loses context over time as project terminology evolves, or hallucinates because its vector database is filled with unstructured, contradictory chat logs.
+
+To solve this, `rbot` enforces strict **Second-Brain Discipline**. The system's memory is not a dumping ground; it is a meticulously structured Knowledge Graph optimized for deterministic vector retrieval. 
+
+When architectural decisions are made, the AI autonomously generates canonical Markdown artifacts utilizing a strict file taxonomy:
+
+- **Taxonomy Prefixing:** Files are prefixed by intent (`ARCH__` for architecture, `RUNBOOK__` for operations, `MEM__` for session reflections). This forces semantic chunking and allows the LLM to filter its own memory space efficiently.
+- **Semantic Bridging (`GLOSSARY__`):** A living glossary explicitly links legacy terms to current architecture (e.g., defining that "AnythingLLM" and `rbot-core` are semantically identical). This prevents the embedding model from losing historical context when system nomenclature changes.
+- **Map of Content (`INDEX__`):** `rbot` maintains a master routing table of its own memory. When asked complex questions, the AI first retrieves the `INDEX__` to discover the exact filenames of the current system specifications, turning probabilistic retrieval into deterministic lookup.
+- **Decision Logging (`MEM__`):** Reflective memory documents capture not just *what* was built, but *why*—explicitly recording rejected ideas, economic tradeoffs, and context.
+
+This architecture ensures that the AI teammate onboarding today has perfect, hallucination-free recall of the engineering tradeoffs made months ago.
+
 ## 📂 Repository Structure
 
 This repository is split into two primary domains:
