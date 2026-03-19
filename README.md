@@ -1,5 +1,5 @@
 
-# 🧠 rbot: Sovereign "Second Brain" & Omnichannel AI Platform
+# rbot: Sovereign "Second Brain" & Omnichannel AI Platform
 
 Welcome to **rbot** — a highly modular, decoupled, multi-agent AI ecosystem designed to run entirely on a localized Raspberry Pi 4 homelab. 
 
@@ -8,7 +8,7 @@ Architected by Ross Blanchard and Archie (an AI Systems Architect), the `rbot` s
 1. **The Amnesiac AI Problem:** By permanently separating the Cognitive Engine (LLM APIs) from the Vector Memory (AnythingLLM) and the Collaboration Interface (Slack), `rbot` provides an omnichannel, context-aware AI team that retains permanent memory of past architectural decisions, code reviews, and project specs.
 2. **The Economic Problem:** Instead of paying $20+ a month for locked-in subscriptions to multiple AI chat products, `rbot` operates on a highly economical **Pay-As-You-Go** model. You can switch between flagship providers (Google Gemini, OpenAI, Anthropic) on the fly. Furthermore, the system's modularity allows simple, low-complexity agentic personas to be routed to local, self-hosted LLMs (like Ollama), driving inference costs down to absolute zero.
 
-## 🏗️ High-Level Architecture
+## High-Level Architecture
 
 The system utilizes an **Interface Segregation** pattern, allowing for two distinct ways to interact with the AI depending on the cognitive load of the task. Both interfaces read and write to the exact same memory brain, and both can mix-and-match LLM providers seamlessly.
 
@@ -48,7 +48,7 @@ graph TD
     ALLM -.->|Standard Native Tools| TOOLS
 ```
 
-## 🔍 Detailed System Topology & Execution Flow
+## Detailed System Topology & Execution Flow
 
 When a user interacts with the `rbot-office` collaborative swarm, the system dynamically routes the request, loads the appropriate persona, and executes a multi-step reasoning loop using the currently selected LLM provider.
 
@@ -147,24 +147,24 @@ flowchart TB
     class CF,API,Slack gateway;
 ```
 
-## ✨ Core Features
+## Core Features
 
-- **Provider Agnostic & Economical:** Switch freely between Google Gemini, OpenAI, and Anthropic APIs on the fly in both the Web UI and the Slack Swarm. Route simple tasks to local LLMs (like Ollama) to reduce inference costs to zero, escaping the $20/month subscription trap.
+- **Provider Agnostic & Economical:** Switch freely between Google Gemini, OpenAI, and Anthropic APIs on the fly in both the Web UI and the Slack Swarm. Route simple tasks to local LLMs (like Ollama) to reduce inference costs to zero.
 - **Omnichannel RAG Persistence:** Decisions made in a Slack thread can be autonomously summarized by the AI (`commit_to_rag` tool) and pushed directly into the central vector database. Those memories can later be recalled in Slack (`search_rag` tool) or directly in the Web UI.
 - **Dynamic Persona Routing:** The Slack swarm isn't just one bot. By analyzing keyword triggers (e.g., `archie`, `qa`, `pm`), the Python engine dynamically hot-swaps system prompts and routes queries to strictly segregated vector databases to prevent cross-persona hallucinations (Identity Dysmorphia).
 - **Role-Based Access Control (RBAC):** Critical infrastructure tools (like writing to Google Drive or committing to the RAG database) are cryptographically locked to a specific Slack Admin ID.
 - **Headless Tool Execution:** The Python swarm utilizes headless OAuth to stream finalized markdown documents and system specs directly from RAM to the `rbot` Google Drive folder, bypassing brittle SD card writes.
 - **Multi-Step Reasoning Loops:** The Python orchestrator utilizes a `while` execution loop, allowing the active cognitive engine to chain multiple tools together (e.g., *Search the Live Web -> Read the Results -> Synthesize a Spec -> Commit to RAG*) entirely autonomously.
 
-## 📚 Knowledge Architecture & Deterministic RAG
+## Knowledge Architecture & Deterministic RAG
 
-A common failure mode of modern AI systems is "Semantic Drift"—where an LLM loses context over time as project terminology evolves, or hallucinates because its vector database is filled with unstructured, contradictory chat logs.
+A common failure mode of modern AI systems is "Semantic Drift" where an LLM loses context over time as project terminology evolves, or hallucinates because its vector database is filled with unstructured, contradictory chat logs.
 
-To solve this, `rbot` enforces strict **Second-Brain Discipline**. The system's memory is not a dumping ground; it is a meticulously structured Knowledge Graph optimized for deterministic vector retrieval. 
+To solve this, `rbot` enforces a strict **Second-Brain Discipline**. The system's memory is not a dumping ground; it is a meticulously structured Knowledge Graph optimized for deterministic vector retrieval. 
 
 When architectural decisions are made, the AI autonomously generates canonical Markdown artifacts utilizing a strict file taxonomy:
 
-- **Taxonomy Prefixing:** Files are prefixed by intent (`ARCH__` for architecture, `RUNBOOK__` for operations, `MEM__` for session reflections). This forces semantic chunking and allows the LLM to filter its own memory space efficiently.
+- **Taxonomy Prefixing:** Files are prefixed by intent (`ARCH__` for architecture, `RUNBOOK__` for operations, `MEM__` for session reflections, etc). This forces semantic chunking and allows the LLM to filter its own memory space efficiently.
 - **Semantic Bridging (`GLOSSARY__`):** A living glossary explicitly links legacy terms to current architecture (e.g., defining that "AnythingLLM" and `rbot-core` are semantically identical). This prevents the embedding model from losing historical context when system nomenclature changes.
 - **Map of Content (`INDEX__`):** `rbot` maintains a master routing table of its own memory. When asked complex questions, the AI first retrieves the `INDEX__` to discover the exact filenames of the current system specifications, turning probabilistic retrieval into deterministic lookup.
 - **Decision Logging (`MEM__`):** Reflective memory documents capture not just *what* was built, but *why*—explicitly recording rejected ideas, economic tradeoffs, and context.
