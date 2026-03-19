@@ -1,4 +1,0 @@
-slack_bolt
-python-dotenv
-google-genai
-requests

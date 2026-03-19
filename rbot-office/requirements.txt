@@ -1,0 +1,8 @@
+slack_bolt
+python-dotenv
+google-genai
+requests
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+ddgs
