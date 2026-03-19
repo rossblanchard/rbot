@@ -1,5 +1,5 @@
 
-# rbot: Sovereign "Second Brain" & Omnichannel AI Platform
+# rbot: Local Omnichannel AI Platform & Persistent Knowledge System
 
 Welcome to **rbot** — a highly modular, decoupled, multi-agent AI ecosystem designed to run entirely on a localized Raspberry Pi 4 homelab. 
 
